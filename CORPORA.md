@@ -135,7 +135,7 @@ survey), and FVAPPS — which this project *already had and dropped*, and which 
 with no proofs. Worth learning why it was cut before assuming it should return.
 
 ## TheoremGraph stage 1 (P3) — acquired 2026-09-01 (Bashar-approved setup card)
-- Location: `bashar@vm-bashar-3:/shared/theoremgraph/` (box, not laptop). Source: HF `uw-math-ai/math-graph` @ main, CC BY 4.0 (verified in THEOREMSEARCH-PROBE.md).
+- Location: the shared-drive VM, `/shared/theoremgraph/` (not the laptop). Source: HF `uw-math-ai/math-graph` @ main, CC BY 4.0 (verified in THEOREMSEARCH-PROBE.md).
 - Files (sizes match HF tree API exactly; SHA-256 in MANIFEST.txt on the box): informal_dependency.csv 2.37GB · formal_dependency.csv 1.05GB · statement_formal.csv 89.5MB · paper_lean_community.csv 8.3KB · paper_lean_repo.csv 3.8KB. Headers verified against probed schemas.
 - Stage 2 (awaits 1TB or explicit OK): paper_arxiv.csv 4.03GB, statement_informal.csv 5.04GB, slogan.csv 1.05GB.
 - Note: informal_dependency exhibits our v0.4 `cited-document` pattern natively (cite_key + dep_name item, null dep_id) with per-edge method provenance — direct schema-mapping path.
