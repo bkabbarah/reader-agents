@@ -1,0 +1,7 @@
+corpus/
+data/
+*.log
+*.err
+.venv*/
+__pycache__/
+*.pyc

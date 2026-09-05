@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #0E1220; color: #E8E4D8; font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+    a { color: #E0AF52; } a:hover { color: #F0C878; }
+    text { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+  </style>
+</helmet>
+<div style="width: 1240px; height: 430px; background: #0E1220; padding: 16px; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 14px; align-items: start">
+
+  <!-- Book map: reading order left to right, citations as arcs pointing at what is used -->
+  <div style="background: #171C2E; border: 1px solid #272E48; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+      <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 15px; color: #E8E4D8">Book map · reading order →</div>
+      <div style="display: flex; gap: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #989DB0; align-items: center">
+        <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #E0AF52; display: inline-block"></span>this item</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #B18FE8; display: inline-block"></span>uses / used by</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #4FD6A5; display: inline-block"></span>reviewed</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px"><svg width="26" height="10" viewBox="0 0 26 10"><path d="M2 5 H18" stroke="#B18FE8" stroke-width="1.6" fill="none"></path><path d="M18 1 L24 5 L18 9 Z" fill="#B18FE8"></path></svg>arrow points at what the proof uses</span>
+      </div>
+    </div>
+    <svg viewBox="0 0 700 250" width="700" height="250" role="img" aria-label="book map">
+      <!-- chapter bands -->
+      <rect x="10" y="150" width="130" height="44" rx="6" fill="#0E1220" stroke="#272E48"></rect>
+      <rect x="150" y="150" width="170" height="44" rx="6" fill="#0E1220" stroke="#272E48"></rect>
+      <rect x="330" y="150" width="200" height="44" rx="6" fill="#0E1220" stroke="#272E48"></rect>
+      <rect x="540" y="150" width="150" height="44" rx="6" fill="#0E1220" stroke="#272E48"></rect>
+      <text x="75" y="212" text-anchor="middle" font-size="10" fill="#6A7086">Ch. 1 · Martingales</text>
+      <text x="235" y="212" text-anchor="middle" font-size="10" fill="#6A7086">Ch. 2 · Brownian motion</text>
+      <text x="430" y="212" text-anchor="middle" font-size="10" fill="#6A7086">Ch. 3 · Stochastic integration</text>
+      <text x="615" y="212" text-anchor="middle" font-size="10" fill="#6A7086">Ch. 4–6</text>
+      <!-- background arcs (other citations), faint -->
+      <g stroke="#272E48" stroke-width="1" fill="none" opacity="0.9">
+        <path d="M60 172 C 60 120, 110 120, 110 172"></path>
+        <path d="M170 172 C 170 100, 240 100, 240 172"></path>
+        <path d="M200 172 C 200 130, 225 130, 225 172"></path>
+        <path d="M360 172 C 360 90, 470 90, 470 172"></path>
+        <path d="M410 172 C 410 125, 445 125, 445 172"></path>
+        <path d="M580 172 C 580 110, 650 110, 650 172"></path>
+        <path d="M300 172 C 300 70, 600 70, 600 172"></path>
+      </g>
+      <!-- highlighted arcs for the current item: arrowhead at the cited (earlier) node -->
+      <defs>
+        <marker id="arrV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#B18FE8"></path></marker>
+      </defs>
+      <g stroke="#B18FE8" stroke-width="1.8" fill="none">
+        <!-- this item (Thm 1.3.13, x=100) uses Prop 1.3.14 (x=112): arrow from 100 to 112 -->
+        <path d="M100 168 C 100 140, 112 140, 112 168" marker-end="url(#arrV)"></path>
+        <!-- later results use this item: arrows from them back to x=100 -->
+        <path d="M135 168 C 135 110, 100 110, 100 168" marker-end="url(#arrV)"></path>
+        <path d="M395 168 C 395 40, 100 40, 100 168" marker-end="url(#arrV)"></path>
+        <path d="M420 168 C 420 30, 100 30, 100 168" marker-end="url(#arrV)"></path>
+        <path d="M660 168 C 660 20, 100 20, 100 168" marker-end="url(#arrV)"></path>
+      </g>
+      <!-- nodes along the baseline -->
+      <g fill="#3A4160">
+        <circle cx="20" cy="172" r="3.5"></circle><circle cx="34" cy="172" r="3.5"></circle><circle cx="48" cy="172" r="3.5"></circle><circle cx="60" cy="172" r="3.5"></circle><circle cx="74" cy="172" r="3.5"></circle><circle cx="86" cy="172" r="3.5"></circle><circle cx="124" cy="172" r="3.5"></circle>
+        <circle cx="160" cy="172" r="3.5"></circle><circle cx="170" cy="172" r="3.5"></circle><circle cx="185" cy="172" r="3.5"></circle><circle cx="200" cy="172" r="3.5"></circle><circle cx="212" cy="172" r="3.5"></circle><circle cx="225" cy="172" r="3.5"></circle><circle cx="240" cy="172" r="3.5"></circle><circle cx="255" cy="172" r="3.5"></circle><circle cx="270" cy="172" r="3.5"></circle><circle cx="285" cy="172" r="3.5"></circle><circle cx="300" cy="172" r="3.5"></circle><circle cx="312" cy="172" r="3.5"></circle>
+        <circle cx="345" cy="172" r="3.5"></circle><circle cx="360" cy="172" r="3.5"></circle><circle cx="375" cy="172" r="3.5"></circle><circle cx="410" cy="172" r="3.5"></circle><circle cx="445" cy="172" r="3.5"></circle><circle cx="460" cy="172" r="3.5"></circle><circle cx="470" cy="172" r="3.5"></circle><circle cx="485" cy="172" r="3.5"></circle><circle cx="500" cy="172" r="3.5"></circle><circle cx="515" cy="172" r="3.5"></circle>
+        <circle cx="550" cy="172" r="3.5"></circle><circle cx="565" cy="172" r="3.5"></circle><circle cx="580" cy="172" r="3.5"></circle><circle cx="600" cy="172" r="3.5"></circle><circle cx="620" cy="172" r="3.5"></circle><circle cx="635" cy="172" r="3.5"></circle><circle cx="650" cy="172" r="3.5"></circle><circle cx="675" cy="172" r="3.5"></circle>
+      </g>
+      <g fill="#4FD6A5"><circle cx="20" cy="172" r="3.5"></circle><circle cx="34" cy="172" r="3.5"></circle><circle cx="48" cy="172" r="3.5"></circle><circle cx="60" cy="172" r="3.5"></circle><circle cx="74" cy="172" r="3.5"></circle></g>
+      <g fill="#B18FE8"><circle cx="112" cy="172" r="4.5"></circle><circle cx="135" cy="172" r="4.5"></circle><circle cx="395" cy="172" r="4.5"></circle><circle cx="420" cy="172" r="4.5"></circle><circle cx="660" cy="172" r="4.5"></circle></g>
+      <circle cx="100" cy="172" r="7" fill="#E0AF52" stroke="#E8E4D8" stroke-width="1.5"></circle>
+      <!-- current item flag -->
+      <path d="M100 179 V 236" stroke="#E0AF52" stroke-width="1" stroke-dasharray="2 3"></path>
+      <rect x="66" y="228" width="76" height="18" rx="4" fill="#2C2410" stroke="#E0AF52"></rect>
+      <text x="104" y="241" text-anchor="middle" font-size="10.5" fill="#E0AF52" font-weight="600">Thm 1.3.13 · p. 36</text>
+      <!-- neighbour labels near the baseline -->
+      <text x="112" y="194" text-anchor="middle" font-size="9" fill="#B18FE8">1.3.14</text>
+      <text x="135" y="163" text-anchor="middle" font-size="9" fill="#B18FE8">1.4.14</text>
+      <text x="395" y="163" text-anchor="middle" font-size="9" fill="#B18FE8">3.4.14</text>
+      <text x="420" y="194" text-anchor="middle" font-size="9" fill="#B18FE8">3.4.18</text>
+      <text x="660" y="163" text-anchor="middle" font-size="9" fill="#B18FE8">5.8.6</text>
+    </svg>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #6A7086">289 items · 203 in-book citations found by label · faint arcs are everyone else's citations · click a dot to jump</div>
+  </div>
+
+  <!-- Neighbourhood: upstream → this item → downstream, arrows always flow left to right -->
+  <div style="background: #171C2E; border: 1px solid #272E48; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+    <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 15px; color: #E8E4D8">Theorem 1.3.13 in context</div>
+    <svg viewBox="0 0 460 300" width="460" height="300" role="img" aria-label="neighbourhood">
+      <defs>
+        <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#B18FE8"></path></marker>
+      </defs>
+      <!-- column headers -->
+      <text x="70" y="18" text-anchor="middle" font-size="10" fill="#989DB0" letter-spacing="1.5">ITS PROOF USES</text>
+      <text x="230" y="18" text-anchor="middle" font-size="10" fill="#989DB0" letter-spacing="1.5">THIS ITEM</text>
+      <text x="390" y="18" text-anchor="middle" font-size="10" fill="#989DB0" letter-spacing="1.5">USED BY LATER PROOFS</text>
+      <line x1="10" y1="26" x2="450" y2="26" stroke="#272E48"></line>
+      <!-- upstream pill -->
+      <rect x="14" y="140" width="112" height="34" rx="8" fill="#0E1220" stroke="#B18FE8"></rect>
+      <text x="70" y="154" text-anchor="middle" font-size="11" fill="#E8E4D8" font-weight="500">Prop 1.3.14</text>
+      <text x="70" y="167" text-anchor="middle" font-size="9.5" fill="#989DB0">p. 37 · right limits</text>
+      <path d="M126 157 C 150 157, 160 157, 176 157" stroke="#B18FE8" stroke-width="1.8" fill="none" marker-end="url(#arrR)"></path>
+      <!-- current -->
+      <rect x="182" y="132" width="96" height="50" rx="10" fill="#2C2410" stroke="#E0AF52" stroke-width="1.6"></rect>
+      <text x="230" y="152" text-anchor="middle" font-size="12" fill="#E0AF52" font-weight="600">Thm 1.3.13</text>
+      <text x="230" y="167" text-anchor="middle" font-size="9.5" fill="#E0AF52">p. 36 · you are here</text>
+      <!-- downstream pills, arrows from current -->
+      <g stroke="#B18FE8" stroke-width="1.8" fill="none">
+        <path d="M278 150 C 300 150, 310 70, 334 70" marker-end="url(#arrR)"></path>
+        <path d="M278 154 C 300 154, 310 128, 334 128" marker-end="url(#arrR)"></path>
+        <path d="M278 160 C 300 160, 310 186, 334 186" marker-end="url(#arrR)"></path>
+        <path d="M278 164 C 300 164, 310 244, 334 244" marker-end="url(#arrR)"></path>
+      </g>
+      <g>
+        <rect x="340" y="53" width="106" height="34" rx="8" fill="#0E1220" stroke="#B18FE8"></rect>
+        <text x="393" y="67" text-anchor="middle" font-size="11" fill="#E8E4D8" font-weight="500">Thm 1.4.14</text><text x="393" y="80" text-anchor="middle" font-size="9.5" fill="#989DB0">p. 46</text>
+        <rect x="340" y="111" width="106" height="34" rx="8" fill="#0E1220" stroke="#B18FE8"></rect>
+        <text x="393" y="125" text-anchor="middle" font-size="11" fill="#E8E4D8" font-weight="500">Prop 3.4.14</text><text x="393" y="138" text-anchor="middle" font-size="9.5" fill="#989DB0">p. 201</text>
+        <rect x="340" y="169" width="106" height="34" rx="8" fill="#0E1220" stroke="#B18FE8"></rect>
+        <text x="393" y="183" text-anchor="middle" font-size="11" fill="#E8E4D8" font-weight="500">Prop 3.4.18</text><text x="393" y="196" text-anchor="middle" font-size="9.5" fill="#989DB0">p. 204</text>
+        <rect x="340" y="227" width="106" height="34" rx="8" fill="#0E1220" stroke="#B18FE8"></rect>
+        <text x="393" y="241" text-anchor="middle" font-size="11" fill="#E8E4D8" font-weight="500">Prop 5.8.6</text><text x="393" y="254" text-anchor="middle" font-size="9.5" fill="#989DB0">p. 386</text>
+      </g>
+      <text x="230" y="290" text-anchor="middle" font-size="9.5" fill="#6A7086">earlier in the book ← → later in the book · click a box to jump</text>
+    </svg>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

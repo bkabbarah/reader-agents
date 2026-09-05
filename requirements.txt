@@ -1,0 +1,6 @@
+torch
+transformers
+pypdfium2
+pymupdf
+pillow
+rapidfuzz

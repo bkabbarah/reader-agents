@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1240, "h": 430, "title": "A · Reading-order arcs (leading)" },
+    { "file": "ChapterColumns.dc.html", "x": 0, "y": 560, "w": 1240, "h": 430, "title": "B · Chapter columns" },
+    { "file": "FocusStrip.dc.html", "x": 0, "y": 1120, "w": 1240, "h": 300, "title": "C · Focus strip" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": 1320, "y": 0, "w": 300, "text": "Graph panels for the Audit Desk item view.\n\nA (top) is the candidate: reading order runs left to right, every arrow points at the result a proof USES, the current item is the gold node with a flag, and the neighbourhood panel reads upstream → this item → downstream.\n\nB and C are alternates on two axes: B makes chapter structure explicit; C shows only the current item's citations.\n\nSample data: Karatzas–Shreve Theorem 1.3.13 (real edges from the desk)." }
+  ],
+  "launch": { "view": "canvas" }
+}
