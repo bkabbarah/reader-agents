@@ -25,7 +25,7 @@ import os
 import re
 from collections import Counter
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 CONF_MIN = 0.75
 
 # schema v0.4.2 ingredient policies (which references count as ingredients) — selected by --policy

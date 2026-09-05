@@ -7,7 +7,7 @@ with the link (external evaluators included). usage: build_audit_desk.py <out.ht
 import json, sys, glob, os, re
 from pathlib import Path
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 out = Path(sys.argv[1])
 FIELDS = [
     ("Group theory", [("armstrong", "Armstrong — Groups and Symmetry (1988)"), ("dixon-mortimer", "Dixon & Mortimer — Permutation Groups (1st ed., 1996)")]),
@@ -58,7 +58,7 @@ BARE = re.compile(r"[\\^_{}]")                                 # a token that on
 VARLIKE = re.compile(r"^[A-Za-z](?:[,.;:)]|')?$|^[=<>+\-]$|^\(?[A-Za-z]$")  # H  K,  =  (G
 
 def wrap_bare_tex(s):
-    """The reader often quotes math without delimiters ("xy^{-1}\in H\cap K"). Outside existing math spans,
+    r"""The reader often quotes math without delimiters ("xy^{-1}\in H\cap K"). Outside existing math spans,
     wrap maximal runs of LaTeX-looking tokens, absorbing adjacent single-letter variables, in \( \)."""
     out = []
     for i, part in enumerate(MATH_SPAN.split(s)):
@@ -79,10 +79,10 @@ def wrap_bare_tex(s):
                 run.append(t)
             else:
                 if run:
-                    buf.append("\(" + " ".join(run) + "\)"); run = []
+                    buf.append("\\(" + " ".join(run) + "\\)"); run = []
                 buf.append(t)
         if run:
-            buf.append("\(" + " ".join(run) + "\)")
+            buf.append("\\(" + " ".join(run) + "\\)")
         out.append(" ".join(buf))
     return "".join(out)
 

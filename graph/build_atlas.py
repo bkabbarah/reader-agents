@@ -3,7 +3,7 @@
 (`const G = __GRAPH_DATA__;`) and write the publishable page. usage: build_atlas.py <out.html>"""
 import json, sys
 from pathlib import Path
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 out = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "atlas" / "ripeness-atlas.html"
 g = json.loads((ROOT / "data/build/graph.json").read_text(encoding="utf-8"))
 # keep the page small: drop bulky per-node raw text beyond what the drawer shows

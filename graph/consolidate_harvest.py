@@ -16,7 +16,7 @@ import os
 import sys
 from collections import Counter
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 HDIR = os.path.join(ROOT, "data", "dates", "harvest")
 OUT = os.path.join(HDIR, "consolidated")
 

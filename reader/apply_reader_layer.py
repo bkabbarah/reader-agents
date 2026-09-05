@@ -12,7 +12,7 @@ import json, glob, sys
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 mode = sys.argv[1] if len(sys.argv) > 1 else "trench"
 
 def load_reader(d):

@@ -20,7 +20,7 @@ import sys
 import unicodedata
 from collections import Counter, defaultdict
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 CHAPTER_DIRS = ([os.path.join(ROOT, "data", "prototype")]
                 + sorted(glob.glob(os.path.join(ROOT, "data", "extracted", "lebl-ba1", "*")))
                 + sorted(glob.glob(os.path.join(ROOT, "data", "extracted", "proofwiki", "*")))

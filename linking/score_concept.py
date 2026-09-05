@@ -5,7 +5,7 @@ import json, glob
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 D = ROOT / "data/audit/concept-res-v1"
 items = {it["item_id"]: it for it in json.loads((D / "items.json").read_text(encoding="utf-8"))}
 decoys = json.loads((D / "truth/decoys.json").read_text())

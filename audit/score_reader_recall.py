@@ -10,7 +10,7 @@ Step 3: python score_recall.py --reader   (reads match_out_reader + reader_uses)
 import os, json, glob, re, sys
 from pathlib import Path
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 D = ROOT / os.environ.get("RECALL_DIR", "data/audit/recall-v1")   # recall-v2-batch0 via RECALL_DIR
 sample = {s["proof_id"]: s for s in json.loads((D / "sample.json").read_text(encoding="utf-8"))["sample"]}
 merged = json.loads((D / "enumerated_merged.json").read_text(encoding="utf-8"))

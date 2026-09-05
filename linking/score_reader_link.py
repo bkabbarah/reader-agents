@@ -4,7 +4,7 @@ Rows carry every surface variant of the resolved name (so build_graph's exact-no
 import json, glob, re, sys
 from pathlib import Path
 from collections import Counter, defaultdict
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 D = ROOT / "data/audit/reader-link-v1"
 STOP = {"the","a","an","of","for","on","in","is","are","and","to","by","with","at","as","or"}
 def toks(s): return {t for t in re.sub(r"[^a-z0-9]+"," ",(s or "").lower()).split() if t not in STOP and len(t)>2}

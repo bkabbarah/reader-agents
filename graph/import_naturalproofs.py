@@ -23,7 +23,7 @@ import os
 import sys
 import collections
 
-REPO = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_JSON = os.path.join(REPO, "corpus", "naturalproofs", "naturalproofs_proofwiki.json")
 OUT_DIR = os.path.join(REPO, "data", "extracted", "naturalproofs")
 INSTANCES_OUT = os.path.join(OUT_DIR, "instances.jsonl")

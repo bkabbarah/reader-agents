@@ -11,7 +11,7 @@ import json, re, hashlib
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 SRC = ROOT / "corpus/trench-ra/TRENCH_REAL_ANALYSIS.tex"
 OUT = ROOT / "data/extracted/trench-ra"
 OUT.mkdir(parents=True, exist_ok=True)

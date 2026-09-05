@@ -12,7 +12,7 @@ of the JSON file is the audit trail.
 import glob, json, os, sys
 from collections import defaultdict
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 FIELD = {"armstrong": "group theory", "dixon-mortimer": "group theory",
          "silverman-tate": "elliptic curves", "silverman-aec": "elliptic curves",
          "chung-aitsahlia": "stochastic processes", "karatzas-shreve": "stochastic processes"}

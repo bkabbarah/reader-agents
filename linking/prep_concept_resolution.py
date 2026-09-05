@@ -10,7 +10,7 @@ import json, random, re, sys
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "data" / "audit" / "concept-res-v1"
 (OUT / "tasks").mkdir(parents=True, exist_ok=True)
 (OUT / "truth").mkdir(parents=True, exist_ok=True)

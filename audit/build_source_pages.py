@@ -9,7 +9,7 @@ Writes <out_dir>/source-<slug>.html and prints sizes. Pages come from blocks_nou
 import base64, glob, json, os, sys
 import fitz
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 BOOKS = [
     ("armstrong", "groups-and-symmetry-armstrong.pdf", "Armstrong — Groups and Symmetry"),
     ("dixon-mortimer", "permutation-groups-dixon-mortimer.pdf", "Dixon & Mortimer — Permutation Groups"),

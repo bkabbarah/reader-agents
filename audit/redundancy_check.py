@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 from collections import defaultdict
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 g = json.loads((ROOT / "data/build/graph.json").read_text(encoding="utf-8"))
 nodes = {n["id"]: n for n in g["nodes"]}
 # proofs per canonical node, keyed by source doc of the proof

@@ -5,7 +5,7 @@ import json, re
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 np_ = json.load(open(ROOT / "corpus/naturalproofs/naturalproofs_trench.json", encoding="utf-8"))["dataset"]
 np_th = {t["label"].split("-", 1)[1]: t for t in np_["theorems"]}            # 'thmtype:1.1.6' -> record
 np_id2label = {t["id"]: t["label"].split("-", 1)[1] for t in np_["theorems"] + np_["definitions"]}

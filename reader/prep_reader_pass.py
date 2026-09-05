@@ -9,7 +9,7 @@ usage: prep_reader_pass.py trench   -> data/extracted/trench-ra/reader_tasks/
 import json, os, sys
 from pathlib import Path
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 mode = sys.argv[1]
 PROMPT = """You are extracting the INGREDIENTS of mathematical proofs for a dependency graph. For each proof below, list every prior result the proof relies on - named theorems/lemmas/propositions/corollaries it invokes explicitly OR by an unmistakable implicit appeal (e.g. "since the set is compact and f continuous, f is bounded" = the extreme value theorem) - and every DEFINITION or CONCEPT whose content the argument actually uses (uniform convergence, completeness), not mere vocabulary. Exclude proof techniques (contradiction, WLOG, induction-as-technique), restatements of the hypotheses, and background arithmetic/order facts about the reals. Criterion: include it if it is a result or concept that at some point in history did not yet exist. Be exhaustive within that criterion; mark borderline items with lower confidence. Use the standard name of the result when one exists. If the proof defers to another work by citation (e.g. "See [111, I.5.1]" or "[233, Chapter X, Proposition 3]"), list each citation as an ingredient with kind "cited-document", name = the citation text exactly as written, how = "explicit"; a proof that only says "follows from the previous result" lists that result.
 

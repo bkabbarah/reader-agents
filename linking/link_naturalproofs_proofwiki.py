@@ -24,7 +24,7 @@ import os
 import collections
 from urllib.parse import unquote, urlparse
 
-REPO = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PW_INSTANCES = os.path.join(REPO, "data", "extracted", "proofwiki", "batch1", "instances.jsonl")
 NP_INSTANCES = os.path.join(REPO, "data", "extracted", "naturalproofs", "instances.jsonl")
 OUT_LINKS = os.path.join(REPO, "data", "linking", "np2021_links.jsonl")

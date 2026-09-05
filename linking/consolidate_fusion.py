@@ -6,7 +6,7 @@ import json, sys
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 SCRATCH = Path(sys.argv[1]) if len(sys.argv) > 1 else None  # scratchpad dir holding fusion-judge/ + keys
 if SCRATCH is None:
     raise SystemExit("usage: consolidate_fusion.py <scratchpad-dir>")

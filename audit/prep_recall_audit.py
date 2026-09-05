@@ -15,7 +15,7 @@ Outputs to <outdir>: tasks/enum-<A|B>-<k>.txt prompts (5 proofs each), truth/fle
 import json, os, random, sys, glob
 from pathlib import Path
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "data" / "audit" / "recall-v1"
 (OUT / "tasks").mkdir(parents=True, exist_ok=True)
 (OUT / "truth").mkdir(parents=True, exist_ok=True)

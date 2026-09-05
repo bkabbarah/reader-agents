@@ -8,7 +8,7 @@ import os, json, glob, math
 from pathlib import Path
 from collections import defaultdict
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 D = ROOT / os.environ.get("RECALL_DIR", "data/audit/recall-v1")   # recall-v2-batch0 via RECALL_DIR
 import sys
 READER = "--reader" in sys.argv   # score the reader-protocol extraction instead of the original fleet

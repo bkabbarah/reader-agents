@@ -8,7 +8,7 @@ usage: build_evaluator_packet.py <book-slug> <out.html> [--policy strict|all]
 import json, sys, html, glob, random
 from pathlib import Path
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]      # repo root (scripts live one folder down)
 slug, out = sys.argv[1], Path(sys.argv[2])
 policy = sys.argv[sys.argv.index("--policy") + 1] if "--policy" in sys.argv else "all"
 STRICT_KINDS = {"theorem", "lemma", "corollary", "proposition", "principle"}

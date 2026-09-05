@@ -21,7 +21,7 @@ import random
 import sys
 from collections import defaultdict
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 BDIR = os.path.join(ROOT, "data", "baselines")
 random.seed(20260901)
 
